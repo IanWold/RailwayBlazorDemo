@@ -1,6 +1,9 @@
-using Microsoft.AspNetCore.ResponseCompression;
-
 var builder = WebApplication.CreateBuilder(args);
+
+if (Environment.GetEnvironmentVariable("PORT") is not null and string environmentPort && int.TryParse(environmentPort, out int port))
+{
+    builder.WebHost.ConfigureKestrel(o => o.ListenAnyIP(port));
+}
 
 // Add services to the container.
 
