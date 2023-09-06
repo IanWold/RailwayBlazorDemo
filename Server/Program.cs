@@ -1,4 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
+{
+    Args = args,
+    ContentRootPath = "./"
+});
 
 if (Environment.GetEnvironmentVariable("PORT") is not null and string environmentPort && int.TryParse(environmentPort, out int port))
 {
